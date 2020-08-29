@@ -1,4 +1,4 @@
-package net.robotap.Controller;
+package net.robotap.controller;
 
 import java.io.IOException;
 
@@ -23,20 +23,26 @@ public class GitHubSingleton {
         return single_instance;
     }
 
-    public void login(String username, String password) {
+    public Boolean login(String username, String password) {
         this.username = username;
         this.password = password;
+        Boolean status = false;
 
         try {
             this.github = new GitHubBuilder().withPassword(this.username, this.password).build();
             if (github.isCredentialValid()) {
                 System.out.println("login success");
+                status = true;
             } else {
                 System.err.println("error loggin into github");
+                status = true;
             }
         } catch (IOException e) {
             System.err.println("error trying to login to github with username or password: " + e);
+            status = true;
         }
+
+        return status;
     }
 
     public void getMyOrganizations(){
@@ -57,11 +63,12 @@ public class GitHubSingleton {
         return user;
     }
 
-    public void listRepos() {
+    public PagedIterable<GHRepository> listRepos() {
         PagedIterable<GHRepository> repos = getUser().listRepositories();
         for (GHRepository repo : repos) {
             System.out.println(repo.getHttpTransportUrl());
         }
+        return repos;
     }
 
 }
