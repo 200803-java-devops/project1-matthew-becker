@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import net.robotap.controller.GitHubSingleton;
 
-@WebServlet(name="GitLoginAction", urlPatterns = "/gitlogin.do" )
+@WebServlet(name="GitLoginAction", urlPatterns = "/gitlogin.do")
 public class GitLoginAction extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
@@ -29,7 +29,6 @@ public class GitLoginAction extends HttpServlet {
         Boolean status = gitUser.login(user, pass);
         HttpSession session = req.getSession();
         
-
         if(status){
             session.setAttribute("user", user);
             // PagedIterable<GHRepository> repos = gitUser.listRepos();
