@@ -7,11 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "Api", urlPatterns = {"/api"})
+@WebServlet(name = "Api", urlPatterns = { "/api" })
 public class Api extends HttpServlet {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
 
     @Override

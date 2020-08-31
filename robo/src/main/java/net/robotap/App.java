@@ -15,7 +15,6 @@ import net.robotap.controller.BashCommands;
 
 /**
  * Robotap the app for developers
- *
  */
 public class App {
     public static final Optional<String> port = Optional.ofNullable(System.getenv("PORT"));
@@ -37,6 +36,7 @@ public class App {
         server.setPort(Integer.valueOf(port.orElse("8080")));
         server.getConnector();
         Context context = server.addWebapp("", base);
+        context.setAltDDName(new File("src/main/webapp/WEB-INF/web.xml").getAbsolutePath());
         WebResourceRoot resources = new StandardRoot(context);
         WebResourceSet webResourceSet = new DirResourceSet(resources, "/WEB-INF/classes", base, "/");
         resources.addPreResources(webResourceSet);

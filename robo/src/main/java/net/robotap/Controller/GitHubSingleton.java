@@ -65,9 +65,9 @@ public class GitHubSingleton {
 
     public PagedIterable<GHRepository> listRepos() {
         PagedIterable<GHRepository> repos = getUser().listRepositories();
-        for (GHRepository repo : repos) {
-            System.out.println(repo.getHttpTransportUrl());
-        }
+        // for (GHRepository repo : repos) {
+        //     System.out.println(repo.getHttpTransportUrl());
+        // }
         return repos;
     }
 

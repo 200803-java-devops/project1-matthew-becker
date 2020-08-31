@@ -2,8 +2,8 @@
     <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" href="#">
-                    <span data-feather="home"></span>
+                <a class="nav-link active" href="/dashboard">
+                    <span data-feather="dashboard"></span>
                     Dashboard <span class="sr-only">(current)</span>
                 </a>
             </li>

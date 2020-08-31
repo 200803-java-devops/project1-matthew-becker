@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name="GitLoginForm", urlPatterns = "/login" )
+@WebServlet(name="GitLoginForm", urlPatterns = { "/login" })
 public class GitLoginForm extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
@@ -17,7 +17,7 @@ public class GitLoginForm extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("p", "loginForm");
-        RequestDispatcher view = req.getRequestDispatcher("index.jsp");
+        RequestDispatcher view = req.getRequestDispatcher("pages/index.jsp");
         view.forward(req, resp);
     }
 }
