@@ -1,18 +1,18 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
   <groupId>net.robotap</groupId>
   <artifactId>robo</artifactId>
-  <packaging>jar</packaging>
   <version>1.0.1</version>
+  <packaging>jar</packaging>
   <name>robo</name>
-  <url>http://maven.apache.org</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <exec.mainClass>net.robotap.App</exec.mainClass>
     <tomcat.version>9.0.37</tomcat.version>
+    <exec.mainClass>net.robotap.App</exec.mainClass>
   </properties>
 
   <dependencies>
@@ -73,28 +73,6 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
-      <plugin>
-        <groupId>com.spotify</groupId>
-        <artifactId>dockerfile-maven-plugin</artifactId>
-        <version>1.4.13</version>
-        <executions>
-          <execution>
-            <id>default</id>
-            <goals>
-              <goal>build</goal>
-              <goal>push</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <repository>localhost:5000/robotap</repository>
-          <tag>${project.version}</tag>
-          <buildArgs>
-            <JAR_FILE>${project.artifactId}-${project.version}</JAR_FILE>
-            <PORT>8080</PORT>
-          </buildArgs>
-        </configuration>
       </plugin>
     </plugins>
   </build>
