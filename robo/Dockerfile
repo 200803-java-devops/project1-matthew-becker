@@ -12,5 +12,10 @@ RUN apt-get -y install sysstat
 COPY . /usr/share/robotap/
 EXPOSE 8080
 COPY entrypoint.sh /usr/share/scripts/entrypoint.sh
+# RUN mkdir /usr/share/robotap/
+# RUN mkdir /usr/share/robotap/clients
+# COPY clients/Dockerfile /usr/share/robotap/clients
+# COPY clients/entrypoint.sh /usr/share/robotap/clients
+# COPY clients/start.sh /usr/share/robotap/clients
 ENTRYPOINT ["sh", "/usr/share/scripts/entrypoint.sh"]
 # ENTRYPOINT [ "/usr/bin/java", "-jar", "/usr/share/robotap/target/robo-1.0.1.jar" ]

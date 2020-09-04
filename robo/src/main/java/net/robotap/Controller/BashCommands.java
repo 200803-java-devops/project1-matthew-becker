@@ -13,7 +13,7 @@ import net.robotap.model.BashResponse;
 public class BashCommands {
 
     public BashResponse gitClone(String httpUrl) {
-        return runBashCommand("/clients", "git clone ", httpUrl);
+        return runBashCommand("/clients/", "git clone ", httpUrl);
     }
 
     public BashResponse runMavenInstall(String project) {
@@ -24,12 +24,12 @@ public class BashCommands {
         return runBashCommand("/clients/", "ls ", "");
     }
 
-    public BashResponse build(String project) {
-        return runBashScript("/clients/", "start.sh ", project);
-    }
-
     public BashResponse getHealth(String project) {
         return runBashCommand("/clients/", "mpstat ", "");
+    }
+
+    public BashResponse build(String project) {
+        return runBashScript("/clients/", "start.sh ", project);
     }
 
     public BashResponse runBashCommand(String path, String command, String args) {
