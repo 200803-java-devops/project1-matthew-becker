@@ -1,7 +1,7 @@
 
 <div
     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Dashboard</h1>
+    <h1 class="h2">Health</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
         <div class="alert alert-warning alert-dismissible fade hide" role="alert" id="dashboard_alerts">
             <span id="dashboard_alert_text">Loading...</span>
@@ -20,24 +20,20 @@
     </div>
 </div>
 
-<h3>User: ${sessionScope.user}</h3>
+<h3>Running Docker Images: ${sessionScope.user}</h3>
 <div class="table-responsive">
-    <table class="table table-striped table-sm">
+    <%-- <table class="table table-striped table-sm">
         <thead>
             <tr>
-                <th>Repo Owner</th>
-                <th>Url</th>
                 <th>Status</th>
-                <th>Clone</th>
+                <th>Status</th>
+                <th>Image</th>
             </tr>
         </thead>
-        <tbody id="dashboard_tbody">
+        <tbody id="health_tbody">
             
         </tbody>
-    </table>
-    <div class="d-flex justify-content-center">
-        <div class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
+    </table> --%>
+    <div id="health_body">
     </div>
 </div>

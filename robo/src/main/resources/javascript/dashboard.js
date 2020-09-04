@@ -1,6 +1,6 @@
 
 
-fetch('http://localhost:8080/api/repos')
+fetch('/api/repos')
   .then(response => response.json()).then(data => updateRepoList(data));
   // .then(data => console.log(data));
 
@@ -33,7 +33,7 @@ function startClone(repo){
   console.log("starting clone here" + repo["url"]);
   let status = document.getElementById(repo["id"]);
   status.innerHTML = "Starting"
-  fetch('http://localhost:8080/api/clone?' + 'url=' + repo["url"])
+  fetch('/api/clone?' + 'url=' + repo["url"])
   .then(response => response.json()).then(function(response) {
     if(response["statusCode"] == "1"){
       status.innerHTML = "Finished"
@@ -60,7 +60,7 @@ function showDashboardAlert(message){
 }
 
 
-fetch('http://localhost:8080/api/projects')
+fetch('/api/projects')
   .then(response => response.json())
   .then(data => updateClients(data));
   // .then(data => console.log(data));
@@ -91,7 +91,7 @@ function startImage(repo){
   console.log("starting clone here" + repo["name"]);
   let status = document.getElementById(repo["name"]);
   status.innerHTML = "Starting"
-  fetch('http://localhost:8080/api/build?' + 'project=' + repo["name"])
+  fetch('/api/build?' + 'project=' + repo["name"])
   .then(response => response.json()).then(function(response) {
     if(response["statusCode"] == "1"){
       status.innerHTML = "Running"
@@ -101,4 +101,35 @@ function startImage(repo){
     showDashboardAlert(response["command"]);
     console.log(response)
   });
+}
+
+
+fetch('/api/health')
+  .then(response => response.json())
+  .then(data => getHealth(data));
+  // .then(data => console.log(data));
+
+
+function getHealth(data) {
+  // data.forEach(repo => {
+  //   // console.log(repo);
+  //   var tr = document.createElement("tr");
+  //   var td1 = document.createElement("td");
+  //   var td2 = document.createElement("td")
+  //   var button = document.createElement("BUTTON");
+  //   td1.innerHTML = repo["name"];
+  //   td2.innerHTML = "not running";
+  //   td2.setAttribute("id", repo["name"]);
+  //   button.innerHTML = "run";
+  //   button.onclick = function() {startImage(repo)}
+  //   // button.classList.add("btn btn-sm btn-outline-secondary");
+  //   button.className = "btn btn-sm btn-outline-secondary"
+  //   tr.appendChild(td1);
+  //   tr.appendChild(td2);
+  //   tr.appendChild(button);
+  //   document.getElementById("clients_tbody").appendChild(tr);
+  // });
+  var p = document.createElement("p");
+  p.innerHTML = data["response"];
+  document.getElementById("health_body").appendChild(p);
 }

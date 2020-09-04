@@ -28,6 +28,10 @@ public class BashCommands {
         return runBashScript("/clients/", "start.sh ", project);
     }
 
+    public BashResponse getHealth(String project) {
+        return runBashCommand("/clients/", "mpstat ", "");
+    }
+
     public BashResponse runBashCommand(String path, String command, String args) {
         System.out.println("Working Directory = " + System.getProperty("user.dir") + path);
 

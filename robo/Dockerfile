@@ -8,6 +8,7 @@ RUN apt-get -y update
 RUN apt-get -y install openjdk-11-jdk-headless
 RUN apt-get -y install git
 RUN apt-get -y install maven
+RUN apt-get -y install sysstat
 COPY . /usr/share/robotap/
 EXPOSE 8080
 COPY entrypoint.sh /usr/share/scripts/entrypoint.sh
