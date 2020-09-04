@@ -1,21 +1,16 @@
-package net.robotap.controller.servlets;
+package net.robotap.controller.servlets.api;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-
 import org.kohsuke.github.GHRepository;
 import org.kohsuke.github.PagedIterable;
 
@@ -27,36 +22,36 @@ public class GetRepos extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * API endpoint to get all signed in users github repos, will return array of JSON objects 
+     */
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
         HttpSession session = req.getSession();
         GitHubSingleton gitUser = GitHubSingleton.user();
-        // JsonNode result;
-        String result;
+        String result; // JsonNode result;
         ObjectMapper objectMapper = new ObjectMapper();
-        List<String> reposObj = new ArrayList<>();
-      
+        List<Repo> reposEntitys = new ArrayList<>();
         
-        //this is setting a session.user variable if user logs in successfully 
+        //checking if user is signed in then getting all github repos then respoding with JSON
         if(session.getAttribute("user") != null){
             PagedIterable<GHRepository> repos = gitUser.listRepos();
-
             for (GHRepository repo : repos) {
-                System.out.println(repo.getHttpTransportUrl());
-                reposObj.add(repo.getHttpTransportUrl());
+                Repo repoEntity = new Repo(repo.getHttpTransportUrl(), repo.getOwnerName(), repo.getNodeId());
+                reposEntitys.add(repoEntity);
             }
-            objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
-            result = objectMapper.writeValueAsString(reposObj);
+            result = objectMapper.writeValueAsString(reposEntitys);
         } else {
             String json = "{ \"error\":\"not signed in\"}";
-            // result = objectMapper.readTree(json);
             result = json;
         }
         
         PrintWriter out = resp.getWriter();
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
+        resp.setStatus(200);
         out.print(result);
         out.flush();
     }

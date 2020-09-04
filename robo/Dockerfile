@@ -1,6 +1,13 @@
-FROM openjdk:12
+# FROM openjdk:12
 # FROM openjdk:8-jre-alpine
 # RUN apk --no-cache add curl
+# RUN yum -y install git
+
+FROM debian:latest
+RUN apt-get -y update
+RUN apt-get -y install openjdk-11-jdk-headless
+RUN apt-get -y install git
+RUN apt-get -y install maven
 COPY . /usr/share/robotap/
 EXPOSE 8080
 COPY entrypoint.sh /usr/share/scripts/entrypoint.sh

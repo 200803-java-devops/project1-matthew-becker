@@ -2,7 +2,6 @@ package net.robotap;
 
 import java.io.File;
 import java.util.Optional;
-
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.WebResourceRoot;
@@ -10,8 +9,6 @@ import org.apache.catalina.WebResourceSet;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.webresources.DirResourceSet;
 import org.apache.catalina.webresources.StandardRoot;
-
-import net.robotap.controller.BashCommands;
 
 /**
  * Robotap the app for developers
@@ -21,13 +18,6 @@ public class App {
 
     public static void main(String[] args) {
         System.out.println("Robotap the app for developers");
-
-
-        // BashCommands commands = new BashCommands();
-        // String response =
-        // commands.gitClone("https://github.com/200803-java-devops/project0-matthew-becker.git");
-        // System.out.println(response);
-
 
         // tomcat setup here
         final String base = new File("./").getAbsolutePath();
@@ -47,6 +37,5 @@ public class App {
             System.err.println("trouble starting tomcat: " + e);
         }
         server.getServer().await();
-
     }
 }

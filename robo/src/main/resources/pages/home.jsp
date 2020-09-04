@@ -2,7 +2,7 @@
 <div class="jumbotron">
     <div class="container">
       <h1 class="display-3">Robotap</h1>
-      <p>"the software that manages your app hands free"</p>
+      <p>"the software that manages your app's"</p>
       <p><a class="btn btn-primary btn-lg" href="/login" role="button">Get Started &raquo;</a></p>
     </div>
 </div>
@@ -11,7 +11,7 @@
     <!-- Example row of columns -->
     <div class="row">
       <div class="col-md-4">
-        <h2>Functions</h2>
+        <h2>Features</h2>
         <p>
             <ul>
                 <li>Can configure Robotap through web portal to be applied to any software project</li>
@@ -21,10 +21,10 @@
                 <li>Manages software logs and alerts</li>
             </ul>
         </p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        <%-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> --%>
       </div>
       <div class="col-md-4">
-        <h2>API - JSON</h2>
+        <h2>API</h2>
                 <p>
             <ul>
                 <li>Endpoints are restricted by authentication</li>
@@ -34,10 +34,10 @@
                 <li>account login/signup</li>
             </ul>
         </p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        <%-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> --%>
       </div>
       <div class="col-md-4">
-        <h2>Web Views</h2>
+        <h2>Portal</h2>
         <p>
             <ul>
                 <li>Hosted Software Project Details</li>
@@ -51,7 +51,7 @@
                 <li>reset user accounts</li>
             </ul>
         </p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        <%-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> --%>
       </div>
     </div>
 

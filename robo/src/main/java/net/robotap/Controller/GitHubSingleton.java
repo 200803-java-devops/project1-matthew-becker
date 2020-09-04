@@ -71,4 +71,15 @@ public class GitHubSingleton {
         return repos;
     }
 
+    public String logout(){
+        try {
+            this.github.deleteAuth(getUser().getId());
+            single_instance = null;
+            return "logged out";
+        } catch (IOException e) {
+            System.err.println("failed to logout" + e);
+        }
+        return "failed to logout";
+    }
+
 }

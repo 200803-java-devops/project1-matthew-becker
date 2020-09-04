@@ -9,7 +9,7 @@
         <li class="nav-item text-nowrap">
             <%String user = (String) session.getAttribute("user"); %>
             <% if (user != null) { %>
-                <a class="nav-link" href="/logout">Sign Out</a>
+                <a class="nav-link" href="/signout">Sign Out</a>
             <% } else { %>
                 <a class="nav-link" href="/login">Login</a>
             <% } %>
